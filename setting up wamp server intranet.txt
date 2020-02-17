@@ -1,0 +1,28 @@
+setting to set intranet 
+
+intranet allow other computer in same server network to access the 
+web page in a server (i.e your www folder and the website you have there )
+
+you must change this folder settings in httpd.conf file to look exactly like this
+the first one is mostly the important among all
+
+<Directory />
+    Options FollowSymLinks
+    AllowOverride None
+    Order deny,allow
+    Allow from all
+</Directory>
+
+
+<FilesMatch "^\.ht">
+    Order allow,deny
+    Allow from all
+    Satisfy All
+</FilesMatch>
+
+<Directory "cgi-bin">
+    AllowOverride None
+    Options None
+    Order allow,deny
+    Allow from all
+</Directory>
